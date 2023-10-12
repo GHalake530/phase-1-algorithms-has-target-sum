@@ -1,20 +1,29 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const encounteredNumbers = {};
+
+  for (let i = 0; i < array.length; i++) {
+    const difference = target - array[i];
+    if (encounteredNumbers[difference]) {
+      return true;
+    }
+    encounteredNumbers[array[i]] = true;
+  }
+
+  return false;
 }
+// Test cases
+console.log(hasTargetSum([3, 8, 12, 4, 11, 7], 10));  
+console.log(hasTargetSum([22, 19, 4, 6, 30], 25));     
+console.log(hasTargetSum([1, 2, 5], 4));               
+console.log(hasTargetSum([1, 2, 3, 4, 5], 9));         
+console.log(hasTargetSum([-1, -2, 4, 6, 7], 5));        
+console.log(hasTargetSum([1, 2, 3, 4], 8));   
 
-/* 
-  Write the Big O time complexity of your function here
-*/
+// Explanation:
+// The algorithm efficiently finds whether there is a pair of numbers in the array that sums to the target.
+// It uses a hash table to keep track of encountered numbers, allowing for constant-time lookups.
+// The time complexity of this algorithm is O(n) because it iterates through the array once, and the space complexity is O(n) to store the encountered numbers in the hash table.
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
